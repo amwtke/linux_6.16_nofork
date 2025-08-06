@@ -187,7 +187,10 @@ SYM_FUNC_START(__switch_to_asm)
 	pushq	%r14
 	pushq	%r15
 
-	/* switch stack */
+	/* switch stack 
+	xiaojin TASK_threadsp 是一个符号，值是 task_struct.thread.sp的偏移。
+	TASK_threadsp(%rdi) 的意思是，在%rdi内存位置偏移 TASK_threadsp 个字节。
+	*/
 	movq	%rsp, TASK_threadsp(%rdi)
 	movq	TASK_threadsp(%rsi), %rsp
 

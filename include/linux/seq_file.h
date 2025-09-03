@@ -27,7 +27,7 @@ struct seq_file {
 	const struct file *file;
 	void *private;
 };
-
+//!xiaojin-pid_maps seq_operations
 struct seq_operations {
 	void * (*start) (struct seq_file *m, loff_t *pos);
 	void (*stop) (struct seq_file *m, void *v);

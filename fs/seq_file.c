@@ -222,6 +222,7 @@ ssize_t seq_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 	}
 	// get a non-empty record in the buffer
 	m->from = 0;
+	//!xiaojin-pid_maps -3 实际对seq_file ops 的编排调用点。
 	p = m->op->start(m, &m->index);
 	while (1) {
 		err = PTR_ERR(p);

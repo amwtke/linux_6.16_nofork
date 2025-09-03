@@ -363,7 +363,7 @@ static int show_map(struct seq_file *m, void *v)
 	show_map_vma(m, v);
 	return 0;
 }
-
+//!xiaojin-pid_maps -2 seq_file的seq_operations。里面包含了所有获取vma，遍历vma的方法。调用顺序写在 proc_pid_maps_operations->read->seq_read 中。是个模版方法设计模式，中间有如何调用 start->show->next->stop的过程。
 static const struct seq_operations proc_pid_maps_op = {
 	.start	= m_start,
 	.next	= m_next,
@@ -373,6 +373,7 @@ static const struct seq_operations proc_pid_maps_op = {
 
 static int pid_maps_open(struct inode *inode, struct file *file)
 {
+	//!xiaojin-pid_maps -1 open一个pid，主要是绑定seq_file的op为 proc_pid_maps_op 。
 	return do_maps_open(inode, file, &proc_pid_maps_op);
 }
 

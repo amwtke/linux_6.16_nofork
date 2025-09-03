@@ -533,6 +533,7 @@ static inline void *get_freepointer_safe(struct kmem_cache *s, void *object)
 		return get_freepointer(s, object);
 
 	object = kasan_reset_tag(object);
+	//!xiaojin-freeptr_offset 使用这个offset的地方。
 	freepointer_addr = (unsigned long)object + s->offset;
 	copy_from_kernel_nofault(&p, (freeptr_t *)freepointer_addr, sizeof(p));
 	return freelist_ptr_decode(s, p, freepointer_addr);
@@ -5744,6 +5745,7 @@ static int calculate_sizes(struct kmem_cache_args *args, struct kmem_cache *s)
 		s->offset = size;
 		size += sizeof(void *);
 	} else if ((flags & SLAB_TYPESAFE_BY_RCU) && args->use_freeptr_offset) {
+		//!xiaojin-freeptr_offset 在这里使用，如果有自定义的freeptr_offset，就把cache的offset设置成这个自定的值。
 		s->offset = args->freeptr_offset;
 	} else {
 		/*

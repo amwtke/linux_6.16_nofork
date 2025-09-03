@@ -318,6 +318,7 @@ struct kmem_cache_args {
 	 * Note that @ctor currently isn't supported with custom free pointers
 	 * as a @ctor requires an external free pointer.
 	 */
+	//!xiaojin-freeptr_offset 在slub中，freelist指向一个slab的空闲链表地址，每个chunk大小是固定的，比如：64字节，但是对象只有56个字节的实际大小，所以，中间还还有一个8字节的指针，用来指向下一个free chunk的地址。这8个字节的地址可以放在chunk中的任何起始位置，这个参数用来指定这个在chunk中的起始offset。
 	unsigned int freeptr_offset;
 	/**
 	 * @use_freeptr_offset: Whether a @freeptr_offset is used.

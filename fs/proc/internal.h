@@ -125,6 +125,7 @@ struct proc_inode {
 /*
  * General functions
  */
+//!inode本来跟pid没关系，但是这里特指proc下的inode，/proc/pid/maps，所以，这个maps inode跟一个pid有关系。父目录就是pid。所以这里有个proc_inode结构维护。
 static inline struct proc_inode *PROC_I(const struct inode *inode)
 {
 	return container_of(inode, struct proc_inode, vfs_inode);

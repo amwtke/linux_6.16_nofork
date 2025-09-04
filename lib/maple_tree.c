@@ -52,7 +52,7 @@
  *
  */
 
-//!xiaojin-maple_tree （exp）的一个最大的优势就是不需要将node embed到使用者的对象中了。并且所有的操作：增删查改，扩容，裂解，都支持 RCU —— 都可以copy出新的节点，更新在新节点，然后统一替换原来的老节点。https://www.youtube.com/watch?v=RaXhP-QLUxI&list=WL&index=7
+//!xiaojin-maple_tree （exp）的一个最大的优势就是不需要将node embed到使用者的对象中了。并且所有的操作：增删查改，扩容，裂解，都支持 RCU !—— 都可以copy出新的节点，更新在新节点，然后统一替换原来的老节点。https://www.youtube.com/watch?v=RaXhP-QLUxI&list=WL&index=7
 #include <linux/maple_tree.h>
 #include <linux/xarray.h>
 #include <linux/types.h>

@@ -11,7 +11,9 @@
             "intelliSenseMode": "macos-clang-x64",
             "defines": [
                 "CONFIG_SMP",
-                "CONFIG_MEMCG"
+                "CONFIG_MEMCG",
+                "CONFIG_MMU",
+                "CONFIG_VM_EVENT_COUNTERS"
             ]
         }
     ],
